@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Auto System Deployment Status Dashboard">
+    <title>Auto - Repository Status</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --code-bg: #090d16;
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .badge-success { background-color: rgba(34, 197, 94, 0.15); color: var(--success-color); border: 1px solid var(--success-color); }
+        .badge-warning { background-color: rgba(245, 158, 11, 0.15); color: var(--warning-color); border: 1px solid var(--warning-color); }
+        .badge-danger { background-color: rgba(239, 68, 68, 0.15); color: var(--danger-color); border: 1px solid var(--danger-color); }
+        .badge-neutral { background-color: rgba(148, 163, 184, 0.15); color: var(--text-secondary); border: 1px solid var(--text-secondary); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background-color: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            color: var(--accent-blue);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.875rem;
+        }
+
+        th {
+            background-color: #111827;
+            color: var(--text-secondary);
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--card-border);
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .msg-cell {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .timestamp {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .log-container {
+            background-color: var(--code-bg);
+            border-radius: 0.5rem;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .log-header {
+            background-color: #1e293b;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .log-header.err {
+            color: var(--danger-color);
+        }
+
+        .log-code {
+            padding: 1rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.825rem;
+            color: #e2e8f0;
+            overflow-x: auto;
+            max-height: 400px;
+            white-space: pre-wrap;
+        }
+
+        .log-code.err {
+            color: #fca5a5;
+        }
+
+        .log-details summary {
+            cursor: pointer;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .log-heading {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .log-heading.err { color: var(--danger-color); }
+
+        .log-stream {
+            font-family: ui-monospace, monospace;
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            max-height: 150px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .log-stream.err { color: #fca5a5; }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: 2rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--card-border);
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                Auto - Repository Status
+            </h1>
+            <span class="badge badge-success">SUCCESS</span>
+        </header>
+
+        <section class="grid">
+            <div class="card">
+                <div class="card-label">Last Polled Commit</div>
+                <div class="card-value"><code>ae46164</code></div>
+            </div>
+            <div class="card">
+                <div class="card-label">Branch & Remote</div>
+                <div class="card-value">origin/main</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Poll Interval</div>
+                <div class="card-value">60s</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Last Poll Check</div>
+                <div class="card-value" style="font-size: 0.95rem;">2026-09-02T20:13:25.060162+00:00</div>
+            </div>
+        </section>
+
+        
+            <section class="card logs-card">
+                <h2>Latest Execution Output</h2>
+                <div class="log-container">
+                    <div class="log-header">
+                        <span>STDOUT</span>
+                        <span>Commit: <code>ae46164</code></span>
+                    </div>
+                    <pre class="log-code">Updated timestamp.txt with current ISO datetime: 2026-09-02T19:48:57Z
+</pre>
+                    
+                </div>
+            </section>
+            
+
+        <section class="card" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.25rem; margin-bottom: 1rem;">Execution History</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Commit</th>
+                            <th>Author</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Duration</th>
+                            <th>Logs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><span class="timestamp">2026-09-02T19:48:57.334754+00:00</span></td>
+                <td><code class="commit-sha">ae46164</code></td>
+                <td>DanielBerns</td>
+                <td class="msg-cell">updated gitignore</td>
+                <td><span class="badge badge-success">SUCCESS</span></td>
+                <td>0.0s</td>
+                <td>
+                <details class="log-details">
+                    <summary>View Output Logs</summary>
+                    <div class="log-heading">STDOUT</div><pre class="log-stream">Updated timestamp.txt with current ISO datetime: 2026-09-02T19:48:57Z
+</pre>
+                    
+                </details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td><span class="timestamp">2026-09-02T19:46:44.973801+00:00</span></td>
+                <td><code class="commit-sha">480e47e</code></td>
+                <td>DanielBerns</td>
+                <td class="msg-cell">first deploy.sh</td>
+                <td><span class="badge badge-success">SUCCESS</span></td>
+                <td>0.0s</td>
+                <td>
+                <details class="log-details">
+                    <summary>View Output Logs</summary>
+                    <div class="log-heading">STDOUT</div><pre class="log-stream">Updated timestamp.txt with current ISO datetime: 2026-09-02T19:46:44Z
+</pre>
+                    
+                </details>
+                </td>
+            </tr>
+            
+            <tr>
+                <td><span class="timestamp">2026-09-02T19:32:08.415069+00:00</span></td>
+                <td><code class="commit-sha">a1148a2</code></td>
+                <td>DanielBerns</td>
+                <td class="msg-cell">first commit</td>
+                <td><span class="badge badge-danger">FAILURE</span></td>
+                <td>0.0s</td>
+                <td></td>
+            </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            Generated by <strong>auto</strong> (Git Auto-Updater) at 2026-09-02 20:13:25 UTC. Hosted on GitHub Pages.
+        </footer>
+    </div>
+</body>
+</html>
