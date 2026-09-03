@@ -150,12 +150,18 @@
             font-size: 0.8rem;
         }
 
+        .logs-card {
+            width: 100%;
+        }
+
         .log-container {
             background-color: var(--code-bg);
             border-radius: 0.5rem;
             border: 1px solid var(--card-border);
             overflow: hidden;
             margin-top: 1rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .log-header {
@@ -167,6 +173,8 @@
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid var(--card-border);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .log-header.err {
@@ -181,10 +189,18 @@
             overflow-x: auto;
             max-height: 400px;
             white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .log-code.err {
             color: #fca5a5;
+        }
+
+        .log-details {
+            width: 100%;
+            min-width: 320px;
+            box-sizing: border-box;
         }
 
         .log-details summary {
@@ -212,6 +228,8 @@
             max-height: 150px;
             overflow-y: auto;
             white-space: pre-wrap;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .log-stream.err { color: #fca5a5; }
@@ -238,13 +256,13 @@
             <h1>
                 Auto - Repository Status
             </h1>
-            <span class="badge badge-warning">TIMED OUT</span>
+            <span class="badge badge-success">SUCCESS</span>
         </header>
 
         <section class="grid">
             <div class="card">
                 <div class="card-label">Last Polled Commit</div>
-                <div class="card-value"><code>fe76033</code></div>
+                <div class="card-value"><code>1c9bfa7</code></div>
             </div>
             <div class="card">
                 <div class="card-label">Branch & Remote</div>
@@ -256,7 +274,7 @@
             </div>
             <div class="card">
                 <div class="card-label">Last Poll Check</div>
-                <div class="card-value" style="font-size: 0.95rem;">2026-09-03T22:36:08.977614+00:00</div>
+                <div class="card-value" style="font-size: 0.95rem;">2026-09-03T22:59:43.892086+00:00</div>
             </div>
         </section>
 
@@ -266,24 +284,94 @@
                 <div class="log-container">
                     <div class="log-header">
                         <span>STDOUT</span>
-                        <span>Commit: <code>fe76033</code></span>
+                        <span>Commit: <code>1c9bfa7</code></span>
                     </div>
-                    <pre class="log-code">Updated start.txt with current ISO datetime: 2026-09-03T22:36:11Z
-✓ Successfully loaded configuration from /home/danielwaltherberns/Info/weather-forecast/alpha/resume.yaml
+                    <pre class="log-code">Updated start.txt with current ISO datetime: 2026-09-03T22:59:46Z
+application started
+run_news_grab 1
+run_news_grab 1
+Actions.create_sample start
+Scraper.start()
+Actions.create_sample scraper start
+Actions.create_sample adnsur
+Scraper.get(https://www.adnsur.com.ar/) 1
+Scraper.get(https://www.adnsur.com.ar/ 3 - http_code: 200
+Actions.create_sample jornada
+Scraper.get(https://www.diariojornada.com.ar/home) 1
+Scraper.get(https://www.diariojornada.com.ar/home 3 - http_code: 200
+Actions.create_sample cronica
+Scraper.get(https://www.diariocronica.com.ar/) 1
+Scraper.get(https://www.diariocronica.com.ar/ 3 - http_code: 200
+Actions.create_sample elchubut_cdr
+Scraper.get(https://www.elchubut.com.ar/seccion/comodoro-rivadavia) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/comodoro-rivadavia 3 - http_code: 200
+Actions.create_sample elchubut_raw
+Scraper.get(https://www.elchubut.com.ar/seccion/rawson) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/rawson 3 - http_code: 200
+Actions.create_sample elchubut_trw
+Scraper.get(https://www.elchubut.com.ar/seccion/trelew) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/trelew 3 - http_code: 200
+Actions.create_sample elchubut_pmy
+Scraper.get(https://www.elchubut.com.ar/seccion/puerto-madryn) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/puerto-madryn 3 - http_code: 200
+Actions.create_sample elchubut_esq
+Scraper.get(https://www.elchubut.com.ar/seccion/esquel) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/esquel 3 - http_code: 200
+Actions.create_sample infobae
+Scraper.get(https://www.infobae.com/) 1
+Scraper.get(https://www.infobae.com/ 3 - http_code: 200
+Actions.create_sample clarin_lo_ultimo
+Scraper.get(https://www.clarin.com/rss/lo-ultimo/) 1
+Scraper.get(https://www.clarin.com/rss/lo-ultimo/ 3 - http_code: 200
+Actions.create_sample clarin_politica
+Scraper.get(https://www.clarin.com/rss/politica/) 1
+Scraper.get(https://www.clarin.com/rss/politica/ 3 - http_code: 200
+Actions.create_sample clarin_economia
+Scraper.get(https://www.clarin.com/rss/economia/) 1
+Scraper.get(https://www.clarin.com/rss/economia/ 3 - http_code: 200
+Actions.create_sample clarin_internacional
+Scraper.get(https://www.clarin.com/rss/internacional/) 1
+Scraper.get(https://www.clarin.com/rss/internacional/ 3 - http_code: 200
+Actions.create_sample ambito_ultimas_noticias
+Scraper.get(https://www.ambito.com/rss/pages/ultimas-noticias.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/ultimas-noticias.xml 3 - http_code: 200
+Actions.create_sample ambito_economia
+Scraper.get(https://www.ambito.com/rss/pages/economia.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/economia.xml 3 - http_code: 200
+Actions.create_sample ambito_finanzas
+Scraper.get(https://www.ambito.com/rss/pages/finanzas.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/finanzas.xml 3 - http_code: 200
+Actions.create_sample ambito_politica
+Scraper.get(https://www.ambito.com/rss/pages/politica.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/politica.xml 3 - http_code: 200
+Actions.create_sample infobae_rss
+Scraper.get(https://www.infobae.com/feeds/rss/) 1
+Scraper.get(https://www.infobae.com/feeds/rss/ 3 - http_code: 404
+Actions.create_sample cronica_actualidad
+Scraper.get(https://www.diariocronica.com.ar/rss/actualidad) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/actualidad 3 - http_code: 200
+Actions.create_sample cronica_politica
+Scraper.get(https://www.diariocronica.com.ar/rss/politica) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/politica 3 - http_code: 200
+Actions.create_sample cronica_economia
+Scraper.get(https://www.diariocronica.com.ar/rss/economia) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/economia 3 - http_code: 200
+Actions.create_sample cronica_energia
+Scraper.get(https://www.diariocronica.com.ar/rss/energia) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/energia 3 - http_code: 200
+Actions.create_sample cronica_noticias
+Scraper.get(https://www.diariocronica.com.ar/rss/noticias) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/noticias 3 - http_code: 200
+Actions.create_sample scraper stop
+Scraper.stop()
+Actions.create_sample stop
+run_news_grab /home/danielwaltherberns/Info/athena/juliet/live/Storage/news/treestore/samples/000/039/078 2
+application stopped
+Execution time: 9000 ms
+/home/danielwaltherberns/Apps/auto-test
+Updated stop.txt with current ISO datetime: 2026-09-03T22:59:56Z
 </pre>
-                    <div class="log-header err"><span>STDERR</span></div><pre class="log-code err">warning: `VIRTUAL_ENV=/home/danielwaltherberns/Apps/auto/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
-WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1788474974.435579  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1788474978.704213  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-E0000 00:00:1788474984.242551  200525 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
-W0000 00:00:1788474984.732291  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
-W0000 00:00:1788475110.134328  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
-W0000 00:00:1788475239.945327  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
-W0000 00:00:1788475368.535966  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
-W0000 00:00:1788475489.958101  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
-
-[AUTO ERROR]: Script execution timed out after 600 seconds.</pre>
+                    
                 </div>
             </section>
             
@@ -305,6 +393,106 @@ W0000 00:00:1788475489.958101  200525 cpu_allocator_impl.cc:82] Allocation of 14
                     </thead>
                     <tbody>
                         
+            <tr>
+                <td><span class="timestamp">2026-09-03T22:59:56.753273+00:00</span></td>
+                <td><code class="commit-sha">1c9bfa7</code></td>
+                <td>DanielBerns</td>
+                <td class="msg-cell">news grab again</td>
+                <td><span class="badge badge-success">SUCCESS</span></td>
+                <td>10.49s</td>
+                <td>
+                <details class="log-details">
+                    <summary>View Output Logs</summary>
+                    <div class="log-heading">STDOUT</div><pre class="log-stream">Updated start.txt with current ISO datetime: 2026-09-03T22:59:46Z
+application started
+run_news_grab 1
+run_news_grab 1
+Actions.create_sample start
+Scraper.start()
+Actions.create_sample scraper start
+Actions.create_sample adnsur
+Scraper.get(https://www.adnsur.com.ar/) 1
+Scraper.get(https://www.adnsur.com.ar/ 3 - http_code: 200
+Actions.create_sample jornada
+Scraper.get(https://www.diariojornada.com.ar/home) 1
+Scraper.get(https://www.diariojornada.com.ar/home 3 - http_code: 200
+Actions.create_sample cronica
+Scraper.get(https://www.diariocronica.com.ar/) 1
+Scraper.get(https://www.diariocronica.com.ar/ 3 - http_code: 200
+Actions.create_sample elchubut_cdr
+Scraper.get(https://www.elchubut.com.ar/seccion/comodoro-rivadavia) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/comodoro-rivadavia 3 - http_code: 200
+Actions.create_sample elchubut_raw
+Scraper.get(https://www.elchubut.com.ar/seccion/rawson) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/rawson 3 - http_code: 200
+Actions.create_sample elchubut_trw
+Scraper.get(https://www.elchubut.com.ar/seccion/trelew) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/trelew 3 - http_code: 200
+Actions.create_sample elchubut_pmy
+Scraper.get(https://www.elchubut.com.ar/seccion/puerto-madryn) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/puerto-madryn 3 - http_code: 200
+Actions.create_sample elchubut_esq
+Scraper.get(https://www.elchubut.com.ar/seccion/esquel) 1
+Scraper.get(https://www.elchubut.com.ar/seccion/esquel 3 - http_code: 200
+Actions.create_sample infobae
+Scraper.get(https://www.infobae.com/) 1
+Scraper.get(https://www.infobae.com/ 3 - http_code: 200
+Actions.create_sample clarin_lo_ultimo
+Scraper.get(https://www.clarin.com/rss/lo-ultimo/) 1
+Scraper.get(https://www.clarin.com/rss/lo-ultimo/ 3 - http_code: 200
+Actions.create_sample clarin_politica
+Scraper.get(https://www.clarin.com/rss/politica/) 1
+Scraper.get(https://www.clarin.com/rss/politica/ 3 - http_code: 200
+Actions.create_sample clarin_economia
+Scraper.get(https://www.clarin.com/rss/economia/) 1
+Scraper.get(https://www.clarin.com/rss/economia/ 3 - http_code: 200
+Actions.create_sample clarin_internacional
+Scraper.get(https://www.clarin.com/rss/internacional/) 1
+Scraper.get(https://www.clarin.com/rss/internacional/ 3 - http_code: 200
+Actions.create_sample ambito_ultimas_noticias
+Scraper.get(https://www.ambito.com/rss/pages/ultimas-noticias.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/ultimas-noticias.xml 3 - http_code: 200
+Actions.create_sample ambito_economia
+Scraper.get(https://www.ambito.com/rss/pages/economia.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/economia.xml 3 - http_code: 200
+Actions.create_sample ambito_finanzas
+Scraper.get(https://www.ambito.com/rss/pages/finanzas.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/finanzas.xml 3 - http_code: 200
+Actions.create_sample ambito_politica
+Scraper.get(https://www.ambito.com/rss/pages/politica.xml) 1
+Scraper.get(https://www.ambito.com/rss/pages/politica.xml 3 - http_code: 200
+Actions.create_sample infobae_rss
+Scraper.get(https://www.infobae.com/feeds/rss/) 1
+Scraper.get(https://www.infobae.com/feeds/rss/ 3 - http_code: 404
+Actions.create_sample cronica_actualidad
+Scraper.get(https://www.diariocronica.com.ar/rss/actualidad) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/actualidad 3 - http_code: 200
+Actions.create_sample cronica_politica
+Scraper.get(https://www.diariocronica.com.ar/rss/politica) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/politica 3 - http_code: 200
+Actions.create_sample cronica_economia
+Scraper.get(https://www.diariocronica.com.ar/rss/economia) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/economia 3 - http_code: 200
+Actions.create_sample cronica_energia
+Scraper.get(https://www.diariocronica.com.ar/rss/energia) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/energia 3 - http_code: 200
+Actions.create_sample cronica_noticias
+Scraper.get(https://www.diariocronica.com.ar/rss/noticias) 1
+Scraper.get(https://www.diariocronica.com.ar/rss/noticias 3 - http_code: 200
+Actions.create_sample scraper stop
+Scraper.stop()
+Actions.create_sample stop
+run_news_grab /home/danielwaltherberns/Info/athena/juliet/live/Storage/news/treestore/samples/000/039/078 2
+application stopped
+Execution time: 9000 ms
+/home/danielwaltherberns/Apps/auto-test
+Updated stop.txt with current ISO datetime: 2026-09-03T22:59:56Z
+</pre>
+                    
+                </details>
+                </td>
+            </tr>
+            
             <tr>
                 <td><span class="timestamp">2026-09-03T22:46:11.500076+00:00</span></td>
                 <td><code class="commit-sha">fe76033</code></td>
@@ -681,7 +869,7 @@ Updated stop.txt with current ISO datetime: 2026-09-02T20:59:58Z
         </section>
 
         <footer>
-            Generated by <strong>auto</strong> (Git Auto-Updater) at 2026-09-03 22:46:11 UTC. Hosted on GitHub Pages.
+            Generated by <strong>auto</strong> (Git Auto-Updater) at 2026-09-03 22:59:56 UTC. Hosted on GitHub Pages.
         </footer>
     </div>
 </body>
