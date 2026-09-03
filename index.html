@@ -238,13 +238,13 @@
             <h1>
                 Auto - Repository Status
             </h1>
-            <span class="badge badge-success">SUCCESS</span>
+            <span class="badge badge-warning">TIMED OUT</span>
         </header>
 
         <section class="grid">
             <div class="card">
                 <div class="card-label">Last Polled Commit</div>
-                <div class="card-value"><code>bc30423</code></div>
+                <div class="card-value"><code>fe76033</code></div>
             </div>
             <div class="card">
                 <div class="card-label">Branch & Remote</div>
@@ -252,11 +252,11 @@
             </div>
             <div class="card">
                 <div class="card-label">Poll Interval</div>
-                <div class="card-value">3600s</div>
+                <div class="card-value">900s</div>
             </div>
             <div class="card">
                 <div class="card-label">Last Poll Check</div>
-                <div class="card-value" style="font-size: 0.95rem;">2026-09-03T21:55:37.530735+00:00</div>
+                <div class="card-value" style="font-size: 0.95rem;">2026-09-03T22:36:08.977614+00:00</div>
             </div>
         </section>
 
@@ -266,17 +266,24 @@
                 <div class="log-container">
                     <div class="log-header">
                         <span>STDOUT</span>
-                        <span>Commit: <code>bc30423</code></span>
+                        <span>Commit: <code>fe76033</code></span>
                     </div>
-                    <pre class="log-code">Updated start.txt with current ISO datetime: 2026-09-03T21:55:39Z
-/home/danielwaltherberns/Apps/auto-test
-/home/danielwaltherberns/Apps/auto-test
-Updated stop.txt with current ISO datetime: 2026-09-03T21:55:40Z
+                    <pre class="log-code">Updated start.txt with current ISO datetime: 2026-09-03T22:36:11Z
+✓ Successfully loaded configuration from /home/danielwaltherberns/Info/weather-forecast/alpha/resume.yaml
 </pre>
-                    <div class="log-header err"><span>STDERR</span></div><pre class="log-code err">./run_weather_forecast.sh: line 3: cd: /home/danielwaltherberns/Apps/weather_forecast: No such file or directory
-error: Failed to spawn: `forecast-pipeline`
-  Caused by: No such file or directory (os error 2)
-</pre>
+                    <div class="log-header err"><span>STDERR</span></div><pre class="log-code err">warning: `VIRTUAL_ENV=/home/danielwaltherberns/Apps/auto/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788474974.435579  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788474978.704213  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1788474984.242551  200525 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+W0000 00:00:1788474984.732291  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475110.134328  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475239.945327  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475368.535966  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475489.958101  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+
+[AUTO ERROR]: Script execution timed out after 600 seconds.</pre>
                 </div>
             </section>
             
@@ -298,6 +305,36 @@ error: Failed to spawn: `forecast-pipeline`
                     </thead>
                     <tbody>
                         
+            <tr>
+                <td><span class="timestamp">2026-09-03T22:46:11.500076+00:00</span></td>
+                <td><code class="commit-sha">fe76033</code></td>
+                <td>DanielBerns</td>
+                <td class="msg-cell">weather forecast pipeline resume 1</td>
+                <td><span class="badge badge-warning">TIMEOUT</span></td>
+                <td>600.08s</td>
+                <td>
+                <details class="log-details">
+                    <summary>View Output Logs</summary>
+                    <div class="log-heading">STDOUT</div><pre class="log-stream">Updated start.txt with current ISO datetime: 2026-09-03T22:36:11Z
+✓ Successfully loaded configuration from /home/danielwaltherberns/Info/weather-forecast/alpha/resume.yaml
+</pre>
+                    <div class="log-heading err">STDERR</div><pre class="log-stream err">warning: `VIRTUAL_ENV=/home/danielwaltherberns/Apps/auto/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788474974.435579  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1788474978.704213  200525 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1788474984.242551  200525 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+W0000 00:00:1788474984.732291  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475110.134328  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475239.945327  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475368.535966  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+W0000 00:00:1788475489.958101  200525 cpu_allocator_impl.cc:82] Allocation of 144253548 exceeds 10% of free system memory.
+
+[AUTO ERROR]: Script execution timed out after 600 seconds.</pre>
+                </details>
+                </td>
+            </tr>
+            
             <tr>
                 <td><span class="timestamp">2026-09-03T21:55:40.003230+00:00</span></td>
                 <td><code class="commit-sha">bc30423</code></td>
@@ -644,7 +681,7 @@ Updated stop.txt with current ISO datetime: 2026-09-02T20:59:58Z
         </section>
 
         <footer>
-            Generated by <strong>auto</strong> (Git Auto-Updater) at 2026-09-03 21:55:40 UTC. Hosted on GitHub Pages.
+            Generated by <strong>auto</strong> (Git Auto-Updater) at 2026-09-03 22:46:11 UTC. Hosted on GitHub Pages.
         </footer>
     </div>
 </body>
